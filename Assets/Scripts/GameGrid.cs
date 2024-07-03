@@ -11,7 +11,7 @@ public class GameGrid : MonoBehaviour
     private static Camera _cam;
 
     [SerializeField] private GameObject card;
-    [SerializeField] private int cardAmount = 4;
+    public static int CardAmount { get; set; }
     private int _rows;
     private int[,] _gridArray;
     private CardFacePicker _cardFacePicker;
@@ -19,11 +19,11 @@ public class GameGrid : MonoBehaviour
     private void Start()
     {
         _rows = DetermineRows();
-        _gridArray = new int[_rows,cardAmount/_rows] ;
+        _gridArray = new int[_rows,CardAmount/_rows] ;
         _cam = Camera.main;
         
         _cardFacePicker = GetComponent<CardFacePicker>();
-        _cardFacePicker.SetCardDeck(cardAmount);
+        _cardFacePicker.SetCardDeck(CardAmount);
         
         GetGridSize();
         InstantiateCards();
@@ -31,16 +31,16 @@ public class GameGrid : MonoBehaviour
 
     private int DetermineRows()
     {
-        for (int i = cardAmount; i > 1; i--)
+        for (int i = 5; i > 1; i--)
         {
-            if (cardAmount == i)
+            if (CardAmount == i)
                 continue;
             
-            if (cardAmount % i == 0)
-                return cardAmount / i;
+            if (CardAmount % i == 0)
+                return CardAmount / i;
         }
-        Debug.Log("caught in : " + cardAmount);
-        return cardAmount/2;
+        Debug.Log("caught in : " + CardAmount);
+        return CardAmount/2;
     }
 
     private void GetGridSize()
@@ -51,7 +51,7 @@ public class GameGrid : MonoBehaviour
 
     private void InstantiateCards()
     {
-        int spacingX = (cardAmount / _rows) + 1 ; 
+        int spacingX = (CardAmount / _rows) + 1 ; 
         int spacingY = _rows+1;
         int i = 1;
         int j = 1;
