@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
-
+ 
 public class CardFacePicker : MonoBehaviour
 {
     [SerializeField] private List<Sprite> totalCardFaceList; 
@@ -38,8 +38,7 @@ public class CardFacePicker : MonoBehaviour
     public void AttachFaceToCard(GameObject card)
     {
         int pickedCard = Random.Range(0, gameCardFaceList.Count);
-        SpriteRenderer spriteRenderer = card.GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = gameCardFaceList[pickedCard];
+        card.GetComponent<Card>().CardFace = gameCardFaceList[pickedCard];;
         gameCardFaceList.RemoveAt(pickedCard);
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -30,17 +31,13 @@ public class GameGrid : MonoBehaviour
 
     private int DetermineRows()
     {
-        for (int i = 6; i > 1; i--)
+        for (int i = cardAmount; i > 1; i--)
         {
             if (cardAmount == i)
                 continue;
+            
             if (cardAmount % i == 0)
-            {
-                Debug.Log("card amount: " + cardAmount);
-                Debug.Log("remainder: " + i);
-                return cardAmount/i;
-            }
-               
+                return cardAmount / i;
         }
         Debug.Log("caught in : " + cardAmount);
         return cardAmount/2;
@@ -50,9 +47,6 @@ public class GameGrid : MonoBehaviour
     {
         _gridHeight = 2f * _cam.orthographicSize;
         _gridWidth = _gridHeight * _cam.aspect;
-        
-        Debug.Log("Height: " + _gridHeight);
-        Debug.Log("Width: " + _gridWidth);
     }
 
     private void InstantiateCards()
@@ -68,7 +62,6 @@ public class GameGrid : MonoBehaviour
                 Vector2 cardPos = new Vector2(i* (_gridWidth / spacingX) , (j * (_gridHeight / spacingY) ) );
                 GameObject currentCard = Instantiate(card, cardPos, Quaternion.identity);
                 _cardFacePicker.AttachFaceToCard(currentCard);
-                Debug.Log(_gridArray[x, y]);
                 i++;
             }
             i = 1;
