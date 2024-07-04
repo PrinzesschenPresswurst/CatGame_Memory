@@ -6,13 +6,16 @@ using UnityEngine;
 public class ScoreKeeper : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreText;
-    private int Score { get; set; }
+    public static int Score { get; set; }
+    public static int HighScore { get; set; }
     
     void Start()
     {
+        Score = 0;
         UpdateScore();
         RoundHandler.MatchMade += OnMatchMade;
         RoundHandler.Mismatch += OnMismatch;
+        RoundHandler.GameEnded += OnGameEnd;
     }   
 
     private void OnMatchMade()
@@ -30,5 +33,18 @@ public class ScoreKeeper : MonoBehaviour
     private void UpdateScore()
     {
         scoreText.text = "Score: " + Score;
+    }
+
+    private void OnGameEnd()
+    {
+        if (PlayerPrefs.GetInt("HighScore") != 0)
+            HighScore = PlayerPrefs.GetInt("HighScore");
+        
+        if (Score > HighScore)
+            PlayerPrefs.SetInt("HighScore", Score);
+        
+        RoundHandler.MatchMade -= OnMatchMade;
+        RoundHandler.Mismatch -= OnMismatch;
+        RoundHandler.GameEnded -= OnGameEnd;
     }
 }

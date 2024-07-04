@@ -3,38 +3,52 @@ using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RoundHandler : MonoBehaviour
 {
     private Card _firstCard;
     private Card _secondCard;
-    private bool _roundIsOver = false;
-    private int _cardTracker = GameGrid.CardAmount;
-    
+    private bool _roundIsOver;
+    private static int _cardTracker;
+     
     [CanBeNull] public static event Action MatchMade;
     [CanBeNull] public static event Action Mismatch;
+    [CanBeNull] public static event Action GameEnded;
     
     
     void Start()
     {
         Card.CardClicked += OnCardClicked;
+        _cardTracker = GameGrid.CardAmount;
+        _roundIsOver = false;
+        _firstCard = null;
+        _secondCard = null;
     }
 
     private void OnCardClicked(Card card)
     {
-        Debug.Log("card tracker: " + _cardTracker);
         if (_roundIsOver)
         {
-            EvaluateRoundResult();
+            CheckGameEnd();
             CleanupRound();
             return;
         }
-        
-        RevealCard(card);
-        StoreCardChoice(card);
-        
+            
+        if (card.CardWasPicked)
+            return;
+
+        if (!_roundIsOver)
+        {
+            RevealCard(card);
+            StoreCardChoice(card);
+        }
+
         if (_firstCard != null && _secondCard != null)
+        {
             _roundIsOver = true;
+            EvaluateRoundResult(); 
+        }
     }
 
     private void RevealCard(Card card)
@@ -46,38 +60,58 @@ public class RoundHandler : MonoBehaviour
     {
         if (_firstCard == null)
             _firstCard = card;
+           
         else if (_secondCard == null)
             _secondCard = card;
+        
+        card.CardWasPicked = true;
     }
 
     private void EvaluateRoundResult()
     {
         if (_firstCard.CardFace.ToString() == _secondCard.CardFace.ToString())
         {
-            Debug.Log("its a pair!");
+            MatchMade.Invoke();
+            _cardTracker -= 2;
+        }
+            
+        else
+        {
+            Mismatch.Invoke();
+        }
+        
+        _roundIsOver = true;
+    }
+
+    private void CleanupRound()
+    {
+        if (_firstCard.CardFace.ToString() == _secondCard.CardFace.ToString())
+        {
             _firstCard.gameObject.SetActive(false);
             _secondCard.gameObject.SetActive(false);
-            _cardTracker -= 2;
-            MatchMade.Invoke();
         }
             
         else
         {
             _firstCard.GetComponent<SpriteRenderer>().sprite = Card.CardBack;
             _secondCard.GetComponent<SpriteRenderer>().sprite = Card.CardBack;
-            Debug.Log("no pair");
-            Mismatch.Invoke();
         }
-        _roundIsOver = true;
+        
+        _firstCard.CardWasPicked = false;
+        _firstCard = null;
+
+        _secondCard.CardWasPicked = false;
+        _secondCard = null;
+        
+        _roundIsOver = false;
     }
 
-    private void CleanupRound()
+    private void CheckGameEnd()
     {
-        if (_cardTracker == 0)
-            Debug.Log("game over");
-        
-        _firstCard = null;
-        _secondCard = null;
-        _roundIsOver = false;
+        if (_cardTracker != 0)
+            return; 
+        GameEnded.Invoke();
+        Card.CardClicked -= OnCardClicked;
+        SceneManager.LoadScene(2);
     }
 }

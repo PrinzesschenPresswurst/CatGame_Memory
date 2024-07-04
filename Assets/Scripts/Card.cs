@@ -11,12 +11,14 @@ public class Card : MonoBehaviour
    public static Sprite CardBack;
    public static event Action<Card> CardClicked;
    private SpriteRenderer _spriteRenderer;
+   public bool CardWasPicked { get; set; }
 
    private void Start()
    {
        CardBack = cardBackSprite;
        _spriteRenderer = GetComponent<SpriteRenderer>();
        _spriteRenderer.sprite = CardBack;
+       CardWasPicked = false;
    }
    
    private void OnMouseUpAsButton()

@@ -8,8 +8,13 @@ using Random = UnityEngine.Random;
 public class CardFacePicker : MonoBehaviour
 {
     [SerializeField] private List<Sprite> totalCardFaceList; 
-    [SerializeField] private List<Sprite> gameCardFaceList = new List<Sprite>();
-    
+    [SerializeField] private List<Sprite> gameCardFaceList;
+
+    private void Start()
+    {
+        gameCardFaceList = new List<Sprite>();
+    }
+
     public void SetCardDeck(int cardAmount)
     {
         int deckSize = cardAmount / 2;
