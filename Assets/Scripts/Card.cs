@@ -23,6 +23,7 @@ public class Card : MonoBehaviour
    
    private void OnMouseUpAsButton()
    {
-       CardClicked.Invoke(this);
+       if (CardClicked != null) 
+           CardClicked.Invoke(this);
    }
 }

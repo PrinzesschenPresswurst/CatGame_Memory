@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -42,19 +43,27 @@ public class GameGrid : MonoBehaviour
         Debug.Log("caught in : " + CardAmount);
         return CardAmount/2;
     }
-
+    
+    
     private void GetGridSize()
-    {
-        _gridHeight = 2f * _cam.orthographicSize;
-        _gridWidth = _gridHeight * _cam.aspect;
-    }
+    { 
+        float aspectRatio = (float)Screen.width / (float)Screen.height;
+       _gridHeight = 2f * _cam.orthographicSize;
+       _gridWidth = _gridHeight * aspectRatio;
+       Debug.Log(_gridWidth + "" + _gridHeight);
 
+       Vector3 camPos = new Vector3(_gridWidth/2, _gridHeight/2, -10);
+       _cam.transform.position = camPos;
+
+    }
+    
     private void InstantiateCards()
     {
-        int spacingX = (CardAmount / _rows) + 1 ; 
-        int spacingY = _rows+1;
+        float spacingX = ((float)CardAmount / (float)_rows) +1 ; 
+        float spacingY = _rows +1;
         int i = 1;
         int j = 1;
+        
         for (int x = 0; x < _gridArray.GetLength(0); x++)
         {
             for (int y = 0; y < _gridArray.GetLength(1); y++)

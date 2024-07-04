@@ -71,13 +71,15 @@ public class RoundHandler : MonoBehaviour
     {
         if (_firstCard.CardFace.ToString() == _secondCard.CardFace.ToString())
         {
-            MatchMade.Invoke();
+            if (MatchMade != null)
+                MatchMade.Invoke();
             _cardTracker -= 2;
         }
             
         else
         {
-            Mismatch.Invoke();
+            if (Mismatch != null)
+                Mismatch.Invoke();
         }
         
         _roundIsOver = true;
@@ -110,7 +112,9 @@ public class RoundHandler : MonoBehaviour
     {
         if (_cardTracker != 0)
             return; 
-        GameEnded.Invoke();
+        
+        if (GameEnded != null)
+            GameEnded.Invoke();
         Card.CardClicked -= OnCardClicked;
         SceneManager.LoadScene(2);
     }

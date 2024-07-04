@@ -43,7 +43,7 @@ public class CardFacePicker : MonoBehaviour
     public void AttachFaceToCard(GameObject card)
     {
         int pickedCard = Random.Range(0, gameCardFaceList.Count);
-        card.GetComponent<Card>().CardFace = gameCardFaceList[pickedCard];;
+        card.GetComponent<Card>().CardFace = gameCardFaceList[pickedCard];
         gameCardFaceList.RemoveAt(pickedCard);
     }
 }
