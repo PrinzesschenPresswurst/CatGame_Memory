@@ -192,7 +192,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.11764706, g: 0.11764706, b: 0.11764706, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -307,38 +307,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalCardFaceList:
-  - {fileID: 21300000, guid: 89be78f798fd27d4faa699a8933b7f6a, type: 3}
-  - {fileID: 21300000, guid: efa88bbbdfb725742aa8492a29f06c5b, type: 3}
-  - {fileID: 21300000, guid: 2bdd9c19eb6680642adbccb7ffbf0c27, type: 3}
-  - {fileID: 21300000, guid: 289fd53cf96b54e4d87ee499b621c278, type: 3}
-  - {fileID: 21300000, guid: 08ed9080b13def6448ae7976f0135ef5, type: 3}
-  - {fileID: 21300000, guid: e8e30cd103daa534c844a2e288c1f1d0, type: 3}
-  - {fileID: 21300000, guid: 669458ba59c7f8c4d9a4bdcef61d525f, type: 3}
-  - {fileID: 21300000, guid: 370a0b4e6e575884ca368d7531d22f92, type: 3}
-  - {fileID: 21300000, guid: 696230f5abd9de54196533993d9de378, type: 3}
-  - {fileID: 21300000, guid: 457681c104c1c5c46b4bb7c32cfa013e, type: 3}
-  - {fileID: 21300000, guid: aaa2b68d1e165ab4c97621892c9c7115, type: 3}
-  - {fileID: 21300000, guid: 3b7ad1783e2dca9478bc1fe1310344a7, type: 3}
-  - {fileID: 21300000, guid: 8b8992bcc105b6c4da4f8c32f9c12069, type: 3}
-  - {fileID: 21300000, guid: be00f8777dead52478cba834f151eced, type: 3}
-  - {fileID: 21300000, guid: 0bc8d81b8034c6b4aadf8f4c4a3e9330, type: 3}
-  - {fileID: 21300000, guid: 282df54acc4674740abd6a5c1c13a9d3, type: 3}
-  - {fileID: 21300000, guid: c7c10c73798b3534ebba39e8db5f8080, type: 3}
-  - {fileID: 21300000, guid: 4b37e389978206f4886d1fef7d7e841d, type: 3}
-  - {fileID: 21300000, guid: ce3f2780440296c4096cee661fa9638b, type: 3}
-  - {fileID: 21300000, guid: 9f3ef8850b0d2ca44b79de063d47dbd6, type: 3}
-  - {fileID: 21300000, guid: 0abd082018bdb8a40a1a6ac8d4af33b3, type: 3}
-  - {fileID: 21300000, guid: 977dda0e0027d7d498f46d0061890dfd, type: 3}
-  - {fileID: 21300000, guid: 500a3d246867154499e9a75df5f17e7a, type: 3}
-  - {fileID: 21300000, guid: a6d3340990df8f84487c8f8e97831728, type: 3}
-  - {fileID: 21300000, guid: fe6dbaaac9e4dd34a8eb3305d45fdfe9, type: 3}
-  - {fileID: 21300000, guid: 531a47045a7371f45b7c83ca35b9bb4a, type: 3}
-  - {fileID: 21300000, guid: ff4b24302a1c2f1499f24d74be65b8a7, type: 3}
-  - {fileID: 21300000, guid: e5f52e84250af2e478aac19687a739b2, type: 3}
-  - {fileID: 21300000, guid: 062ea1c94e663d64ab8172bf37c1d8aa, type: 3}
-  - {fileID: 21300000, guid: 568d243408882654da30f03dbd8a6e07, type: 3}
-  - {fileID: 21300000, guid: c2f6d1a81bce7644db87518f4f5c5322, type: 3}
-  - {fileID: 21300000, guid: 6cccbdc7705c0ce40be2da24788f4303, type: 3}
+  - {fileID: 21300000, guid: 6d88fbe5744258c48bcc0384a79bf15f, type: 3}
+  - {fileID: 21300000, guid: 950114899e0573f49bd812e970ec1831, type: 3}
+  - {fileID: 21300000, guid: 61eccd91bd844554a93ba853c5b0875e, type: 3}
+  - {fileID: 21300000, guid: a9c84093059025844a41687d8c3b4f95, type: 3}
+  - {fileID: 21300000, guid: 4bdbbce9a1433d045a62b1fe58d3c86d, type: 3}
+  - {fileID: 21300000, guid: 200d5e4e5fc99ec4eb37f54852ee21ba, type: 3}
+  - {fileID: 21300000, guid: 7d8e08b66cdbc1040a883bf8dcd95fdf, type: 3}
+  - {fileID: 21300000, guid: fa89f3420c09d7b408d46197ffbb805f, type: 3}
+  - {fileID: 21300000, guid: 8c8c6e358821c2b4aadf8e3f696e1541, type: 3}
+  - {fileID: 21300000, guid: a66c8d271cad5f84a97dc32e9c0c71c0, type: 3}
+  - {fileID: 21300000, guid: 817b165ac1b42a8448dfee0141f7e939, type: 3}
+  - {fileID: 21300000, guid: 306d1210c5c5f6e47bcc1ad6de407f1b, type: 3}
+  - {fileID: 21300000, guid: ce2954abea0569b43aad9dff8ea1e586, type: 3}
+  - {fileID: 21300000, guid: f57ec589a953eee41b0579237a1805a1, type: 3}
+  - {fileID: 21300000, guid: 07e46403d8821d240afac36d1f5f304a, type: 3}
+  - {fileID: 21300000, guid: 89e59e0f66fd9c145bf376a8bca3688e, type: 3}
+  - {fileID: 21300000, guid: 49787505805b83b45abd1933b4672718, type: 3}
+  - {fileID: 21300000, guid: e71040e1324bd5a4d848bf58f7c5a903, type: 3}
+  - {fileID: 21300000, guid: 50429f678235c714da1aac5cc49b56b3, type: 3}
+  - {fileID: 21300000, guid: 084d4d29df6fc5c46a598db337b2a6dd, type: 3}
+  - {fileID: 21300000, guid: 6ab67fc0e715a26409747f0812ef790a, type: 3}
+  - {fileID: 21300000, guid: c87301050bfc7754cb5867171955f21b, type: 3}
   gameCardFaceList: []
 --- !u!1 &812481233
 GameObject:
@@ -444,8 +434,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f59b529e1fb012e4ba8972f38d9efb89, type: 2}
+  m_sharedMaterial: {fileID: 574150590764786679, guid: f59b529e1fb012e4ba8972f38d9efb89, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

@@ -50,7 +50,7 @@ public class GameGrid : MonoBehaviour
         float aspectRatio = (float)Screen.width / (float)Screen.height;
        _gridHeight = 2f * _cam.orthographicSize;
        _gridWidth = _gridHeight * aspectRatio;
-       Debug.Log(_gridWidth + "" + _gridHeight);
+       Debug.Log("width: " +_gridWidth + " height: " + _gridHeight);
 
        Vector3 camPos = new Vector3(_gridWidth/2, _gridHeight/2, -10);
        _cam.transform.position = camPos;
@@ -59,8 +59,8 @@ public class GameGrid : MonoBehaviour
     
     private void InstantiateCards()
     {
-        float spacingX = ((float)CardAmount / (float)_rows) +1 ; 
-        float spacingY = _rows +1;
+        float xDivideAmount = ((float)CardAmount / (float)_rows) +1 ; 
+        float yDivideAmount = _rows +1;
         int i = 1;
         int j = 1;
         
@@ -68,13 +68,31 @@ public class GameGrid : MonoBehaviour
         {
             for (int y = 0; y < _gridArray.GetLength(1); y++)
             {
-                Vector2 cardPos = new Vector2(i* (_gridWidth / spacingX) , (j * (_gridHeight / spacingY) ) );
+                Vector2 cardPos = new Vector2(i* (_gridWidth / xDivideAmount) , (j * (_gridHeight / yDivideAmount) ) );
                 GameObject currentCard = Instantiate(card, cardPos, Quaternion.identity);
                 _cardFacePicker.AttachFaceToCard(currentCard);
+                currentCard.transform.localScale = GetCardScale();
                 i++;
             }
             i = 1;
             j++;
         }
+    }
+
+    private Vector3 GetCardScale()
+    {
+        float cardAmountX = (float)CardAmount / _rows +1;
+        float cardAmountY = _rows +1 ;
+        float cardSpaceBuffer = 0.2f;
+
+        float cardScaleWidthFactor = _gridWidth / cardAmountX - cardSpaceBuffer;
+        Vector3 cardScaleWidth = new Vector3(cardScaleWidthFactor, cardScaleWidthFactor, 1);
+
+        float cardScaleHeightFactor = _gridHeight / cardAmountY - cardSpaceBuffer;
+        Vector3 cardScaleHeight = new Vector3( cardScaleHeightFactor, cardScaleHeightFactor, 1);
+        
+        if (cardScaleWidth.x < cardScaleHeight.x)
+            return cardScaleWidth;
+        return cardScaleHeight; 
     }
 }
