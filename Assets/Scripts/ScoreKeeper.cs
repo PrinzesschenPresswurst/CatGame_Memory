@@ -39,9 +39,13 @@ public class ScoreKeeper : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("HighScore") != 0)
             HighScore = PlayerPrefs.GetInt("HighScore");
-        
+
         if (Score > HighScore)
+        {
             PlayerPrefs.SetInt("HighScore", Score);
+            HighScore = PlayerPrefs.GetInt("HighScore");
+        }
+            
         
         RoundHandler.MatchMade -= OnMatchMade;
         RoundHandler.Mismatch -= OnMismatch;

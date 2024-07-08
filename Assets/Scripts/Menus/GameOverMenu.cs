@@ -8,6 +8,7 @@ public class GameOverMenu : MonoBehaviour
 {
    [SerializeField] private TextMeshProUGUI highScoreText;
    [SerializeField] private TextMeshProUGUI yourScoreText;
+   [SerializeField] private TextMeshProUGUI scoreBrokenText;
 
    private void Start()
    {
@@ -22,5 +23,12 @@ public class GameOverMenu : MonoBehaviour
    {
       yourScoreText.text = "Your Score: " + ScoreKeeper.Score;
       highScoreText.text = "HighScore: " + ScoreKeeper.HighScore;
+
+      if (ScoreKeeper.Score >= ScoreKeeper.HighScore)
+      {
+         yourScoreText.color = Color.yellow;
+         scoreBrokenText.text = "new highscore!!!";
+      }
+        
    }
 }
