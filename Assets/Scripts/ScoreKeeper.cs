@@ -37,18 +37,24 @@ public class ScoreKeeper : MonoBehaviour
 
     private void OnGameEnd()
     {
-        if (PlayerPrefs.GetInt("HighScore") != 0)
-            HighScore = PlayerPrefs.GetInt("HighScore");
+       
 
-        if (Score > HighScore)
-        {
-            PlayerPrefs.SetInt("HighScore", Score);
-            HighScore = PlayerPrefs.GetInt("HighScore");
-        }
-            
+        SetHighScore(GameGrid.GameSize.ToString());
         
         RoundHandler.MatchMade -= OnMatchMade;
         RoundHandler.Mismatch -= OnMismatch;
         RoundHandler.GameEnded -= OnGameEnd;
+    }
+
+    private void SetHighScore(string highScoreString)
+    {
+        if (PlayerPrefs.GetInt(highScoreString) != 0)
+            HighScore = PlayerPrefs.GetInt(highScoreString);
+        
+        if (Score > HighScore)
+        {
+            PlayerPrefs.SetInt(highScoreString, Score);
+            HighScore = PlayerPrefs.GetInt(highScoreString);
+        }
     }
 }

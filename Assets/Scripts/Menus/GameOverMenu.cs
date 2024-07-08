@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class GameOverMenu : MonoBehaviour
 {
-   [SerializeField] private TextMeshProUGUI highScoreText;
+   [SerializeField] private TextMeshProUGUI highScoreSmallText;
+   [SerializeField] private TextMeshProUGUI highScoreMediumText;
+   [SerializeField] private TextMeshProUGUI highScoreBigText;
    [SerializeField] private TextMeshProUGUI yourScoreText;
    [SerializeField] private TextMeshProUGUI scoreBrokenText;
 
@@ -22,13 +24,16 @@ public class GameOverMenu : MonoBehaviour
    private void DisplayScores()
    {
       yourScoreText.text = "Your Score: " + ScoreKeeper.Score;
-      highScoreText.text = "HighScore: " + ScoreKeeper.HighScore;
+      highScoreSmallText.text = "" + PlayerPrefs.GetInt(MainMenu.GameSize.Small.ToString());
+      highScoreMediumText.text = "" + PlayerPrefs.GetInt(MainMenu.GameSize.Medium.ToString());
+      highScoreBigText.text = "" + PlayerPrefs.GetInt(MainMenu.GameSize.Big.ToString());
 
-      if (ScoreKeeper.Score >= ScoreKeeper.HighScore)
+      if (ScoreKeeper.Score > ScoreKeeper.HighScore)
       {
          yourScoreText.color = Color.yellow;
-         scoreBrokenText.text = "new highscore!!!";
+         scoreBrokenText.text = "you broke the high score!";
       }
-        
+      else 
+         scoreBrokenText.text = " ";
    }
 }

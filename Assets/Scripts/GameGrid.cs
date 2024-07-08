@@ -16,6 +16,8 @@ public class GameGrid : MonoBehaviour
     private int _rows;
     private int[,] _gridArray;
     private CardFacePicker _cardFacePicker;
+
+    public static MainMenu.GameSize GameSize { get; set; }
     
     private void Start()
     {

@@ -5,28 +5,45 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-
-    [SerializeField] private int gameSmall = 4;
-    [SerializeField] private int gameMedium = 12;
-    [SerializeField] private int gameBig = 20;
-    
-    
     
     public void LoadSmallGame()
     {
-        GameGrid.CardAmount = gameSmall;
-        SceneManager.LoadScene(1);
+        LoadGame(GameSize.Small);
     }
     
     public void LoadMediumGame()
     {
-        GameGrid.CardAmount = gameMedium;
-        SceneManager.LoadScene(1);
+        LoadGame(GameSize.Medium);
     }
     
     public void LoadBigGame()
     {
-        GameGrid.CardAmount = gameBig;
+        LoadGame(GameSize.Big);
+    }
+
+    private void LoadGame(GameSize size)
+    {
+        switch (size)
+        {
+            case GameSize.Small:
+                GameGrid.CardAmount = 4;
+                break;
+            case GameSize.Medium :
+                GameGrid.CardAmount = 12;
+                break;
+            case GameSize.Big:
+                GameGrid.CardAmount = 20;
+                break;
+        }
+
         SceneManager.LoadScene(1);
+        GameGrid.GameSize = size;
+    }
+    
+    public enum GameSize
+    {
+        Big,
+        Medium,
+        Small
     }
 }
